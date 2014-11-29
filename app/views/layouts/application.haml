@@ -22,4 +22,10 @@
     .container-fluid
       .row
         .col-lg-12
+          - if notice || alert
+            .message
+              - if notice
+                .notice= notice
+              - if alert
+                .alert= alert
           = yield
