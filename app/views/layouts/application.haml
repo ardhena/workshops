@@ -9,16 +9,7 @@
     = javascript_include_tag 'application'
 
   %body
-    %nav.navbar.navbar-default
-      .container-fluid
-        .navbar-header
-          %span.navbar-brand #{AppConfig.workshops_name}
-        %p.navbar-text.navbar-right
-          - if user_signed_in?
-            %span= link_to 'Log out', destroy_user_session_path, method: :delete
-          - else
-            %span= link_to 'Log in', new_user_session_path
-            %span= link_to 'Sign up', new_user_registration_path
+    = render 'layouts/navbar'
     .container-fluid
       .row
         .col-lg-12
