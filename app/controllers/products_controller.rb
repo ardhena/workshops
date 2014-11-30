@@ -1,4 +1,7 @@
 class ProductsController < ApplicationController
+  before_action :authenticate_user!, only: [:edit, :update, :destroy, :create]
+  before_action :authenticate_product_owner, only: [:edit, :update]
+
   expose(:category)
   expose(:products)
   expose(:product)
