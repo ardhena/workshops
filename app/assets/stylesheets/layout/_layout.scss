@@ -1,0 +1,51 @@
+body {
+	background-color: $bg;
+	color: $secondary-base;
+	h1, h2, h3, h4, h5, h6 {
+		color: $primary-base;
+	}
+}
+
+.navbar, .navbar-default {
+	background-color: $primary-base;
+	border-color: $bg;
+	.navbar-header a.navbar-brand {
+		color: $primary;
+		&:hover { 
+			color: $secondary;
+		}
+	}
+	.navbar-collapse ul.nav.navbar-nav li a {
+		color: $secondary;
+		&:hover { color: $primary; }
+	}
+}
+
+table.table.table-hover tbody tr {
+	th, td {
+		border-color: $secondary;
+	}
+	&:hover th, &:hover td {
+		background-color: rgba($primary, 0.5);
+		color: $primary-base;
+	}
+}
+
+.btn.btn-default {
+	background-color: $secondary;
+	border-color: $secondary-base;
+	color: $primary-base;
+	&:hover {
+		background-color: $secondary-base;
+		color: $primary-base;
+	}
+}
+.btn.btn-primary {
+	background-color: $primary;
+	border-color: $primary-base;
+	color: $primary-base;
+	&:hover {
+		background-color: $primary-base;
+		color: $primary;
+	}
+}
