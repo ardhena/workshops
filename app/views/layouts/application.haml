@@ -12,11 +12,11 @@
     = render 'layouts/navbar'
     .container-fluid
       .row
-        .col-lg-12
-          - if notice || alert
-            .message
-              - if notice
-                .notice= notice
-              - if alert
-                .alert= alert
+        .col-lg-1
+        .col-lg-10
+          - if notice
+            .alert.alert-success= notice
+          - if alert
+            .alert.alert-danger= alert
           = yield
+        .col-lg-1
