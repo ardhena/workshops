@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
-  before_action :authenticate_user!, only: [:edit, :update, :destroy, :create]
-  before_action :authenticate_product_owner, only: [:edit, :update]
+  before_action :authenticate_user!, only: [:edit, :update, :destroy, :new, :create]
+  before_action :authenticate_product_owner, only: [:edit, :update, :destroy]
 
   expose(:category)
   expose(:products)
@@ -22,6 +22,7 @@ class ProductsController < ApplicationController
 
   def create
     self.product = Product.new(product_params)
+    product.user_id = current_user.id
 
     if product.save
       category.products << product
