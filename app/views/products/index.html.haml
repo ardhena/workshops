@@ -18,7 +18,7 @@
       %tr
         %td= product.title
         %td= product.description
-        %td= product.price
+        %td= product.price_formatted
         %td.text-right
           %span= link_to 'Show', category_product_path(product.category, product), class: "btn btn-primary"
           - if user_signed_in? && current_user == product.user
@@ -32,7 +32,7 @@
     %span= link_to 'Edit category', edit_category_path(category), class: 'btn btn-default'
     %span= link_to 'Destroy category', category, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default"
   - if user_signed_in?
-    %span= link_to 'New Product', '#', class: 'btn btn-primary'
+    %span= link_to 'New Product', '#', class: 'btn btn-primary new-product-toggle'
 
 - if user_signed_in?
   = render 'products/panel_form'

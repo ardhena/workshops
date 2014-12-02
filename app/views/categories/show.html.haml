@@ -26,7 +26,7 @@
 		%span= link_to 'Edit category', edit_category_path(category), class: 'btn btn-default'
 		%span= link_to 'Destroy category', category, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default"
 	- if user_signed_in?
-		%span= link_to 'New product', '#', class: 'btn btn-primary'
+		%span= link_to 'New product', '#', class: 'btn btn-primary new-product-toggle'
 
 - if user_signed_in?
 	= render 'products/panel_form'
