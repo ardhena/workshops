@@ -1,5 +1,7 @@
-%h1 New category
-
+%h1 New Category
+%ol.breadcrumb
+	%li= link_to 'HOME', root_path
+	%li.active New Category
 = render 'form'
-
-= link_to 'Back', categories_path, class: 'btn btn-primary'
+.buttons
+	%span= link_to 'Back', categories_path, class: 'btn btn-primary'
