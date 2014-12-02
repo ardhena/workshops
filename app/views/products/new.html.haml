@@ -1,5 +1,11 @@
 %h1 New product
+%ol.breadcrumb
+	%li= link_to 'CATEGORIES', root_path
+	%li= link_to category.name, category_path(category)
+	%li= link_to 'PRODUCTS', category_products_path
+	%li.active NEW
 
 = render 'form'
 
-= link_to 'Back', category_products_path
+.buttons
+	%span= link_to 'Back', category_products_path, class: 'btn btn-primary'

@@ -1,4 +1,4 @@
-= simple_form_for(product, url: category_products_path(category)) do |f|
+= simple_form_for [category, product] do |f|
   = f.error_notification
   .form-inputs
     = f.input :title

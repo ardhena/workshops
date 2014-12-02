@@ -1,7 +1,12 @@
 %h1 Editing product
+%ol.breadcrumb
+	%li= link_to 'CATEGORIES', root_path
+	%li= link_to category.name, category_path(category)
+	%li= link_to 'PRODUCTS', category_products_path
+	%li.active EDIT
 
 = render 'form'
 
-= link_to 'Show', category_product_path(category, product)
-\|
-= link_to 'Back', category_path(category)
+.buttons
+	%span= link_to 'Back', category_products_path, class: 'btn btn-primary'
+	%span= link_to 'Product details', category_product_path(category, product), class: 'btn btn-primary'
