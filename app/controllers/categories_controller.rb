@@ -1,10 +1,10 @@
 class CategoriesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy, :create]
-  before_action :authenticate_admin, only: [:new, :edit, :update, :create]
+  before_action :authenticate_admin, only: [:new, :edit, :update, :destroy, :create]
   
-  expose(:categories)
-  expose(:category)
-  expose(:product) { Product.new }
+  expose_decorated(:categories)
+  expose_decorated(:category)
+  expose_decorated(:product) { Product.new }
 
   def index
   end
