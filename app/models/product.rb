@@ -7,6 +7,8 @@ class Product < ActiveRecord::Base
   validates :description, presence: true
   validates :price, presence: true, format: { with: /\A\d+(?:\.\d{0,2})?\z/ }
 
+  default_scope { order('title ASC') }
+
   def average_rating
   	self.reviews.average(:rating)
   end
