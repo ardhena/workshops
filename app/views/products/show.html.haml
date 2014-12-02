@@ -28,7 +28,7 @@
 		%span= link_to 'Edit', edit_category_product_path(product.category, product), class: 'btn btn-default'
 		%span= link_to 'Destroy', category_product_path(category, product), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default"
 	- if user_signed_in?
-		%span= link_to 'Add review', '#', class: 'btn btn-primary'
+		%span= link_to 'Add review', '#', class: 'btn btn-primary new-review-toggle'
 
 - if user_signed_in?
 	= render 'reviews/panel_form'
