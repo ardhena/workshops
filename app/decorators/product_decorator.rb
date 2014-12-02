@@ -8,7 +8,6 @@ class ProductDecorator < Draper::Decorator
   end
 
   def price_formatted
-  	#price.round(2)
   	"$ #{'%.02f' % price}"
   end
 end
