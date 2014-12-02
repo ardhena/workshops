@@ -51,3 +51,34 @@ table.table.table-hover tbody tr {
 		color: $primary;
 	}
 }
+
+ol.breadcrumb {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	font-size: 10pt;
+	background-color: rgba($secondary, 0.5);
+	li:before, .active { color: $primary-base; }
+	a { color: $secondary-base; }
+}
+
+.panel.panel-default {
+	margin-top: 20px;
+	background-color: rgba($secondary, 0.5);
+	border-color: $primary-base;
+	.panel-heading {
+		background-color: rgba($secondary-base, 0.5);
+		border-color: $primary-base;
+		h3.panel-title {
+			color: $primary-base;
+			font-size: 14pt;
+		}
+	}
+	.panel-body {
+		border-color: $primary-base;
+	}
+}
+
+.buttons {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
