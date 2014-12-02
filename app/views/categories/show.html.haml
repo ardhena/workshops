@@ -1,27 +1,31 @@
-%h1 Listing products
+%h1 Category details
 %ol.breadcrumb
-	%li= link_to 'HOME', root_path
+	%li= link_to 'CATEGORIES', root_path
 	%li.active= category.name
-%table.table.table-hover
-	%tr
-		%th Product name
-		%th Price
-		%th
-	- category.products.each do |product|
-		%tr
-			%td= product.title
-			%td= product.price
-			%td.text-right
-				%span= link_to 'Show', category_product_path(category, product), class: "btn btn-primary"
-				%span= link_to 'Edit', edit_category_product_path(category, product), class: "btn btn-default"
-				%span= link_to 'Destroy', category_product_path(category, product), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default"
+
+%h3= category.name
+.row
+	.col-lg-6
+		%table.table.table-hover
+			- if category.products.empty?
+				%p There are no products in this category.
+			- else
+				- category.products.each do |product|
+					%tr
+						%td= product.title
+						%td.text-right
+							%span= link_to 'Show', category_product_path(product.category, product), class: "btn btn-primary"
+							%span= link_to 'Edit', edit_category_product_path(product.category, product), class: "btn btn-default"
+							%span= link_to 'Destroy', category_product_path(product.category, product), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" 
+
 .buttons
 	%span= link_to 'Back', categories_path, class: 'btn btn-primary'
-	%span= link_to 'Edit category', edit_category_path(category), class: 'btn btn-default'
-	%span= link_to 'Destroy category', category, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default"
-	%span= link_to 'New Product', '#', class: 'btn btn-primary'
-.panel.panel-default
-	.panel-heading
-		%h3.panel-title New product
-	.panel-body
-		= render 'products/form'
+	%span= link_to 'List products', category_products_path(category), class: "btn btn-primary"
+	- if user_signed_in? && current_user.admin?
+		%span= link_to 'Edit category', edit_category_path(category), class: 'btn btn-default'
+		%span= link_to 'Destroy category', category, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default"
+	- if user_signed_in?
+		%span= link_to 'New product', '#', class: 'btn btn-primary'
+
+- if user_signed_in?
+	= render 'products/panel_form'
