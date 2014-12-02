@@ -21,8 +21,8 @@ class ApplicationController < ActionController::Base
 	end
 
   def authenticate_product_owner
-    if user_signed_in? != product.user_id
-      flash[:error] = 'You are not allowed to edit this product.'
+    if current_user.id != product.user_id
+      flash[:alert] = 'You are not allowed to edit this product.'
       redirect_to(category_product_url(category, product))
     end
   end
