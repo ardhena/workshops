@@ -1,17 +1,27 @@
-%p#notice= notice
-
-%p
-  %b Name:
-  = category.name
-
-%p
-  - category.products.each do |product|
-    = product.title
-
-%p
-  %h3 New product
-  = render 'products/form'
-
-= link_to 'Edit', edit_category_path(category)
-\|
-= link_to 'Back', categories_path, class: 'btn btn-primary'
+%h1 Listing products
+%ol.breadcrumb
+	%li= link_to 'HOME', root_path
+	%li.active= category.name
+%table.table.table-hover
+	%tr
+		%th Product name
+		%th Price
+		%th
+	- category.products.each do |product|
+		%tr
+			%td= product.title
+			%td= product.price
+			%td.text-right
+				%span= link_to 'Show', category_product_path(category, product), class: "btn btn-primary"
+				%span= link_to 'Edit', edit_category_product_path(category, product), class: "btn btn-default"
+				%span= link_to 'Destroy', category_product_path(category, product), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default"
+.buttons
+	%span= link_to 'Back', categories_path, class: 'btn btn-primary'
+	%span= link_to 'Edit category', edit_category_path(category), class: 'btn btn-default'
+	%span= link_to 'Destroy category', category, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default"
+	%span= link_to 'New Product', '#', class: 'btn btn-primary'
+.panel.panel-default
+	.panel-heading
+		%h3.panel-title New product
+	.panel-body
+		= render 'products/form'
