@@ -4,12 +4,12 @@
 	%li.active= category.name
 
 %h3= category.name
-.row
-	.col-lg-6
-		%table.table.table-hover
-			- if category.products.empty?
-				%p There are no products in this category.
-			- else
+- if category.products.empty?
+	%p There are no products in this category.
+- else
+	.row
+		.col-lg-6
+			%table.table.table-hover
 				- category.products.each do |product|
 					%tr
 						%td= product.title
