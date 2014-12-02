@@ -1,25 +1,38 @@
-%p#notice= notice
-%p#error= flash[:error]
+%h1 Product details
+%ol.breadcrumb
+	%li= link_to 'CATEGORIES', root_path
+	%li= link_to product.category.name, category_path(product.category)
+	%li= link_to 'PRODUCTS', category_products_path(product.category)
+	%li.active= product.title
 
-%p
-  %b Title:
-  = product.title
-%p
-  %b Description:
-  = product.description
-%p
-  %b Price:
-  = product.price
+%h3= product.title
+.row
+	.col-lg-6
+		%table.table.table-hover
+			%tr
+				%th Title
+				%td= product.title
+			%tr
+				%th Description
+				%td= product.description
+			%tr
+				%th Price
+				%td= product.price_formatted
+			%tr
+				%th Owner
+				%td= product.owner
 
-%p
-  %b Category
-  = product.category.name
+.buttons
+	%span= link_to 'Back', category_products_path, class: 'btn btn-primary'
+	- if user_signed_in? && current_user == product.user
+		%span= link_to 'Edit', edit_category_product_path(product.category, product), class: 'btn btn-default'
+		%span= link_to 'Destroy', category_product_path(category, product), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default"
+	- if user_signed_in?
+		%span= link_to 'Add review', '#', class: 'btn btn-primary'
+
+- if user_signed_in?
+	= render 'reviews/panel_form'
 
 %h3 Reviews
-= render 'reviews/form'
-
-= render reviews
-
-= link_to 'Edit', edit_category_product_path(category.id, product.id)
-\|
-= link_to 'Back', category_products_path, class: 'btn btn-primary'
+- product.reviews.each do |review|
+	= render 'reviews/review'
