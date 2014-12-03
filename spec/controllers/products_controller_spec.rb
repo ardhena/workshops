@@ -139,7 +139,7 @@ describe ProductsController do
 
         it 'redirects to the created product' do
           post :create, { product: valid_attributes, category_id: category.to_param }
-          expect(response).to redirect_to(category_product_url(category, Product.last))
+          expect(response).to redirect_to(category_product_url(category, Product.unscoped.last))
         end
 
         describe 'with invalid params' do

@@ -16,7 +16,7 @@
         .col-lg-10
           - if notice
             .alert.alert-success= notice
-          - if alert
-            .alert.alert-danger= alert
+          - if alert || flash[:error]
+            .alert.alert-danger= alert || flash[:error]
           = yield
         .col-lg-1
