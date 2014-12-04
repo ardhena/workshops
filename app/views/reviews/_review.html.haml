@@ -1,4 +1,12 @@
-%p= review.content
-%p
-  %b= review.rating
-  %em= review.author
+.panel.panel-review
+	.panel-heading
+		%h3.panel-title
+			%span 
+				Review by 
+				.author= review.author
+	.panel-body
+		%span.date= review.date
+		%p= review.content
+	.panel-footer
+		%span	Rating:
+		.badge= review.rating

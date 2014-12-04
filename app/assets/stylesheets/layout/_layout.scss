@@ -78,6 +78,46 @@ ol.breadcrumb {
 	}
 }
 
+.panel.panel-review {
+	background-color: rgba($secondary, 0.3);
+	border-color: $secondary-base;
+	.panel-heading {
+		background-color: rgba($secondary-base, 0.3);
+		border-color: $secondary-base;
+		h3.panel-title {
+			color: $secondary-base;
+			font-size: 12pt;
+			.author {
+				display: inline-block;
+				color: $primary-base;
+			}
+		}
+	}
+	.panel-body {
+		border-color: $primary-base;
+		font-size: 11pt;
+		.date {
+			font-size: 10pt;
+			color: $secondary;
+			font-style: italic;
+		}
+		p { margin: 5px 0 5px 0; }
+	}
+	.panel-footer {
+		background-color: rgba($secondary, 0.1);
+		border-color: $secondary-base;
+		span {
+			font-size: 11pt;
+			color: $primary-base;
+		}
+	}
+}
+
+.badge {
+	background-color: $primary;
+	color: $primary-base;
+}
+
 .buttons {
 	margin-top: 20px;
 	margin-bottom: 20px;

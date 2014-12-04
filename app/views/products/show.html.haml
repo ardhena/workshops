@@ -21,6 +21,10 @@
 			%tr
 				%th Owner
 				%td= product.owner
+			%tr
+				%th Rating
+				%td
+					.badge= product.average_rating
 
 .buttons
 	%span= link_to 'Back', category_products_path, class: 'btn btn-primary'
@@ -34,5 +38,7 @@
 	= render 'reviews/panel_form'
 
 %h3 Reviews
-- product.reviews.each do |review|
-	= render 'reviews/review', review: review
+.row
+	.col-lg-8
+		- product.reviews.each do |review|
+			= render 'reviews/review', review: review
