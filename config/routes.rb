@@ -7,5 +7,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  resources :profiles, only: [:show], path: '/users'
+
   root 'categories#index'
 end
