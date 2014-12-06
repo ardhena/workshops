@@ -4,19 +4,22 @@
 	%li.active MY PROFILE
 
 %h2 My newest reviews
-%table.table.table-hover
-	%tr
-		%th Added
-		%th Product
-		%th Rating
-		%th Content
-	- newest_reviews.each do |review|
+- unless newest_reviews.empty?
+	%table.table.table-hover
 		%tr
-			%td= review.date
-			%td= link_to review.product.title, category_product_path(review.product.category, review.product)
-			%td
-				.badge= review.rating
-			%td= review.content	
+			%th Added
+			%th Product
+			%th Rating
+			%th Content
+		- newest_reviews.each do |review|
+			%tr
+				%td= review.date
+				%td= link_to review.product.title, category_product_path(review.product.category, review.product)
+				%td
+					.badge= review.rating
+				%td= review.content
+- else
+	%span You didn't write any reviews.
 
 .row
 	.col-lg-6
@@ -60,18 +63,21 @@
 .row
 	.col-lg-12
 		%h2 Created products
-		%table.table.table-hover
-			%tr
-				%th Category
-				%th Title
-				%th Price
-				%th Average rating
-				%th Reviews count
-			- user.products.each do |product|
+		- unless user.products.empty?
+			%table.table.table-hover
 				%tr
-					%td= link_to product.category.name, category_path(product.category)
-					%td= link_to product.title, category_product_path(product.category, product)
-					%td= product.price_formatted
-					%td
-						.badge= product.average_rating
-					%td= product.reviews.count
+					%th Category
+					%th Title
+					%th Price
+					%th Average rating
+					%th Reviews count
+				- user.products.each do |product|
+					%tr
+						%td= link_to product.category.name, category_path(product.category)
+						%td= link_to product.title, category_product_path(product.category, product)
+						%td= product.price_formatted
+						%td
+							.badge= product.average_rating
+						%td= product.reviews.count
+		- else
+			%span You didn't create any products.

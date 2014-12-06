@@ -43,5 +43,8 @@
 %h3 Reviews
 .row
 	.col-lg-8
-		- product.reviews.each do |review|
-			= render 'reviews/review', review: review
+		- unless product.reviews.empty?
+			- product.reviews.each do |review|
+				= render 'reviews/review', review: review
+		- else
+			%span No reviews yet.
