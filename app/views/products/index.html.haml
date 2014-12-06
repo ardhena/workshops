@@ -21,7 +21,10 @@
         %td= product.description_formatted
         %td= product.price_formatted
         %td
-          .badge= product.average_rating
+          - unless product.average_rating.nil?
+            .badge= product.average_rating
+          - else
+            %span No reviews yet
         %td.text-right
           %span= link_to 'Show', category_product_path(product.category, product), class: "btn btn-primary"
           - if user_signed_in? && current_user == product.user
