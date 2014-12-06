@@ -1,0 +1,18 @@
+%h1 My profile
+%ol.breadcrumb
+	%li= link_to 'HOME', root_path
+	%li.active MY PROFILE
+
+%table.table.table-hover
+	%tr
+		%th First name
+		%td= user.firstname
+	%tr
+		%th Last name
+		%td= user.lastname
+	%tr
+		%th Email
+		%td= user.email
+
+.buttons
+	%span= link_to 'Edit your profile', edit_user_registration_path, class: 'btn btn-primary'
