@@ -10,4 +10,8 @@ class ProductDecorator < Draper::Decorator
   def price_formatted
   	"$ #{'%.02f' % price}"
   end
+
+  def description_formatted
+  	description.truncate(54, separator: /\s/)
+  end
 end
