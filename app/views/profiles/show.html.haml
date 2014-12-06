@@ -3,16 +3,75 @@
 	%li= link_to 'HOME', root_path
 	%li.active MY PROFILE
 
+%h2 My newest reviews
 %table.table.table-hover
 	%tr
-		%th First name
-		%td= user.firstname
-	%tr
-		%th Last name
-		%td= user.lastname
-	%tr
-		%th Email
-		%td= user.email
+		%th Added
+		%th Product
+		%th Rating
+		%th Content
+	- newest_reviews.each do |review|
+		%tr
+			%td= review.date
+			%td= link_to review.product.title, category_product_path(review.product.category, review.product)
+			%td
+				.badge= review.rating
+			%td= review.content	
 
-.buttons
-	%span= link_to 'Edit your profile', edit_user_registration_path, class: 'btn btn-primary'
+.row
+	.col-lg-6
+		%h2 Profile info
+		%table.table.table-hover
+			%tr
+				%th First name
+				%td= user.firstname
+			%tr
+				%th Last name
+				%td= user.lastname
+			%tr
+				%th Email
+				%td= user.email
+			- if current_user.admin?
+				%tr
+					%th Special privilages
+					%td You have admin rights. You can create categories.
+		.buttons
+			%span= link_to 'Edit your profile', edit_user_registration_path, class: 'btn btn-primary'
+
+	.col-lg-6
+		%h2 Statistics
+		%table.table.table-hover
+			%tr
+				%th Account since
+				%td= user.sign_up
+			%tr
+				%th Logged in
+				%td #{user.sign_in_count} times
+			%tr
+				%th Last logged in
+				%td= user.last_sign_in
+			%tr
+				%th Products created
+				%td= user.products.count
+			%tr
+				%th Reviews written
+				%td= user.reviews.count
+
+.row
+	.col-lg-12
+		%h2 Created products
+		%table.table.table-hover
+			%tr
+				%th Category
+				%th Title
+				%th Price
+				%th Average rating
+				%th Reviews count
+			- user.products.each do |product|
+				%tr
+					%td= link_to product.category.name, category_path(product.category)
+					%td= link_to product.title, category_product_path(product.category, product)
+					%td= product.price_formatted
+					%td
+						.badge= product.average_rating
+					%td= product.reviews.count
