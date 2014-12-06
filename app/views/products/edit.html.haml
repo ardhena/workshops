@@ -5,7 +5,9 @@
 	%li= link_to 'PRODUCTS', category_products_path
 	%li.active EDIT
 
-= render 'form'
+.row
+	.col-lg-6
+		= render 'form'
 
 .buttons
 	%span= link_to 'Back', category_products_path, class: 'btn btn-primary'
