@@ -52,6 +52,13 @@ table.table.table-hover tbody tr {
 	}
 }
 
+a {
+	color: $primary;
+	&:hover {
+		color: $primary-base;
+	}
+}
+
 ol.breadcrumb {
 	margin-top: 20px;
 	margin-bottom: 20px;

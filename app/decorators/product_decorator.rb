@@ -2,6 +2,7 @@ class ProductDecorator < Draper::Decorator
   delegate_all
 	decorates_association :category
 	decorates_association :reviews
+  decorates_association :user
 
   def owner
   	"#{user.firstname} #{user.lastname}"
