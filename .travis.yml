@@ -8,6 +8,7 @@ deploy:
   app: lit-brook-4503
   on:
     repo: ardhena/workshops
+  run: "rake db:setup"
 before_script:
 - export RAILS_ENV=test
 - cp config/database.yml.travis config/database.yml
