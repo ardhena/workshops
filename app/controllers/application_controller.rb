@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   def authenticate_admin
     if !current_user.admin?
       sign_out
-      flash[:error] = 'Log in as admin to create category.'
+      flash[:error] = 'Log in as admin to perform this action.'
       redirect_to new_user_session_path
     end
 	end
