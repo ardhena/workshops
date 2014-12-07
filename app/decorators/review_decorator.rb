@@ -9,7 +9,7 @@ class ReviewDecorator < Draper::Decorator
   end
 
   def date
-  	created_at.in_time_zone.strftime("%m-%d-%y %H:%M")
+  	created_at.in_time_zone.strftime("%d-%m-%y %H:%M")
   end
 
 end

@@ -5,10 +5,10 @@ class UserDecorator < Draper::Decorator
 	decorates_association :products
 
 	def sign_up
-		created_at.in_time_zone.strftime("%m-%d-%Y %H:%M")
+		created_at.in_time_zone.strftime("%d-%m-%Y %H:%M")
 	end
 
 	def last_sign_in
-		last_sign_in_at.in_time_zone.strftime("%m-%d-%Y %H:%M")
+		last_sign_in_at.in_time_zone.strftime("%d-%m-%Y %H:%M")
 	end
 end	
