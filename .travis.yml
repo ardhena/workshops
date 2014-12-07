@@ -1,17 +1,15 @@
 language: ruby
 rvm:
-  - 2.1.5
+- 2.1.5
 deploy:
   provider: heroku
   api_key:
-    secure: <%= ENV['API_SECRET'] %>
-  run:
-    - 'rake db:setup'
-  app: <%= ENV['HEROKU_APP_NAME'] %>
+    secure: I3jfwv+gPv6vVX0WJt6QJe6HmY/L6qnLoID32ll/GY0Te/yLwwK0WJNu7IFcG5xi8sxpJJN8OZy4v2ybIecThA5nwcgJrYdHabSlaY6yCH1nJ5AVddN/NovXMQ5OwBUfI1r6k9U3ggNBByF3TzvxXFbNB51ShyJU6VjjrRSDkJ8=
+  app: lit-brook-4503
   on:
     repo: ardhena/workshops
 before_script:
-  - export RAILS_ENV=test
-  - cp config/database.yml.travis config/database.yml
+- export RAILS_ENV=test
+- cp config/database.yml.travis config/database.yml
 script:
-  - bundle exec rake db:create db:migrate db:test:prepare
+- bundle exec rake db:create db:migrate db:test:prepare
