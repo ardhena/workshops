@@ -11,7 +11,7 @@ deploy:
   on:
     repo: ardhena/workshops
 before_script:
+  - export RAILS_ENV=test
   - cp config/database.yml.travis config/database.yml
-  - psql -c 'create database travis_ci_test;' -U postgres
-  - rake db:migrate
-  - rake db:test:prepare
+script:
+  - bundle exec rake db:create db:migrate db:test:prepare
