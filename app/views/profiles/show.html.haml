@@ -34,6 +34,15 @@
 			%tr
 				%th Email
 				%td= user.email
+			%tr
+				%th Phone number
+				%td= user.phone_number
+			%tr
+				%th Company
+				%td= user.company
+			%tr
+				%th Adress
+				%td= user.adress
 			- if current_user.admin?
 				%tr
 					%th Special privilages
